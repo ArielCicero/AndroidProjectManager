@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.email_login);
         etPassword = findViewById(R.id.password_login);
 
-        btnSignIn = findViewById(R.id.btnsignin);
-        btnSignUp = findViewById(R.id.btnsignup);
+        btnSignIn = findViewById(R.id.btnsiginin);
+        btnSignUp = findViewById(R.id.signupbtn);
 
         // for complete login
         btnSignIn.setOnClickListener(new View.OnClickListener() {
