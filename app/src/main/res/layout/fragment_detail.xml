@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/backdesign"
+    android:background="@drawable/marbleclean"
     android:gravity="center"
     tools:context=".DetailFrag">
 
@@ -12,7 +12,7 @@
         android:id="@id/detailsLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:visibility="visible">
 
 
         <ImageView
@@ -22,6 +22,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:src="@drawable/ic_launcher_background"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,7 +34,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="TextView"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ivStatus"
@@ -56,6 +57,7 @@
                 android:id="@+id/btTodo"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:background="@android:color/transparent"
                 android:layout_margin="10dp"
                 android:src="@drawable/todo" />
 
@@ -63,6 +65,7 @@
                 android:id="@+id/btInProgress"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:background="@android:color/transparent"
                 android:layout_margin="10dp"
                 android:src="@drawable/progress" />
 
@@ -70,6 +73,7 @@
                 android:id="@+id/btDone"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:background="@android:color/transparent"
                 android:layout_margin="10dp"
                 android:src="@drawable/done" />
 
