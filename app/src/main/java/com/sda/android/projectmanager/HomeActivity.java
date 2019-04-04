@@ -51,12 +51,12 @@ public class HomeActivity extends AppCompatActivity implements TaskAdapter.RVIte
 
 
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        String userId = user.getUid();
+//        FirebaseUser user = mAuth.getCurrentUser();
+//        String userId = user.getUid();
 
         mDatabase = FirebaseDatabase.getInstance();
 
-        mDbReference = mDatabase.getReference().child("Tasks").child(userId);
+        mDbReference = mDatabase.getReference().child("Tasks").child("Group01");
 
         tvDescription = findViewById(R.id.tvDescription);
         ivStatus = findViewById(R.id.ivStatus);
@@ -73,6 +73,14 @@ public class HomeActivity extends AppCompatActivity implements TaskAdapter.RVIte
                     .hide(manager.findFragmentById(R.id.detailFrag))
                     .show(manager.findFragmentById(R.id.listFrag))
                     .commit();
+            /*
+            manager.beginTransaction()
+                    .setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right,
+                            R.anim.enter_from_left, R.anim.exit_to_right)
+                    .hide(manager.findFragmentById(R.id.detailFrag))
+                    .show(manager.findFragmentById(R.id.listFrag))
+                    .commit();
+            */
         }
 
         // The phone is in landscape mode
@@ -127,7 +135,9 @@ public class HomeActivity extends AppCompatActivity implements TaskAdapter.RVIte
                         task.getDescription(),
                         "todo"
                 );
-                mDbReference.child(taskKey).setValue(updatedTask);
+                mDbReference.child(taskKey).removeValue();
+                String newKey = "todo"+taskKey.substring(taskKey.length() - 1);
+                mDbReference.child(newKey).setValue(updatedTask);
             }
         });
 
@@ -141,7 +151,9 @@ public class HomeActivity extends AppCompatActivity implements TaskAdapter.RVIte
                         task.getDescription(),
                         "in-progress"
                 );
-                mDbReference.child(taskKey).setValue(updatedTask);
+                mDbReference.child(taskKey).removeValue();
+                String newKey = "in-progress"+taskKey.substring(taskKey.length() - 1);
+                mDbReference.child(newKey).setValue(updatedTask);
             }
         });
 
@@ -155,7 +167,9 @@ public class HomeActivity extends AppCompatActivity implements TaskAdapter.RVIte
                         task.getDescription(),
                         "done"
                 );
-                mDbReference.child(taskKey).setValue(updatedTask);
+                mDbReference.child(taskKey).removeValue();
+                String newKey = "done"+taskKey.substring(taskKey.length() - 1);
+                mDbReference.child(newKey).setValue(updatedTask);
             }
         });
 
@@ -180,6 +194,15 @@ public class HomeActivity extends AppCompatActivity implements TaskAdapter.RVIte
                     .hide(manager.findFragmentById(R.id.listFrag))
                     .addToBackStack(null)
                     .commit();
+            /*
+            manager.beginTransaction()
+                    .setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right,
+                            R.anim.enter_from_left, R.anim.exit_to_right)
+                    .show(manager.findFragmentById(R.id.detailFrag))
+                    .hide(manager.findFragmentById(R.id.listFrag))
+                    .addToBackStack(null)
+                    .commit();
+            */
         }
     }
 }

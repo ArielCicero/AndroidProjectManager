@@ -33,7 +33,7 @@ public class ListFrag extends Fragment {
     private RecyclerView mRecyclerView;
     private FirebaseRecyclerAdapter<Task, TaskAdapter.ViewHolder> adapter;
 
-    private FirebaseAuth mAuth;
+//    private FirebaseAuth mAuth;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mDbReference;
 
@@ -59,13 +59,13 @@ public class ListFrag extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(layoutManager);
 
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        String userId = user.getUid();
+//        mAuth = FirebaseAuth.getInstance();
+//        FirebaseUser user = mAuth.getCurrentUser();
+//        String userId = user.getUid();
 
         mDatabase = FirebaseDatabase.getInstance();
 
-        mDbReference = mDatabase.getReference().child("Tasks").child(userId);
+        mDbReference = mDatabase.getReference().child("Tasks").child("Group01");
 
 
         Query query = mDbReference.orderByPriority();//.orderByKey();//.equalTo("title");
