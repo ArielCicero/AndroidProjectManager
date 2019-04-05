@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -29,6 +30,7 @@ public class TaskAdapter extends FirebaseRecyclerAdapter<Task, TaskAdapter.ViewH
 
         TextView tvTaskTitle;
         ImageView ivTaskStatus;
+        LinearLayout card;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -36,6 +38,7 @@ public class TaskAdapter extends FirebaseRecyclerAdapter<Task, TaskAdapter.ViewH
 
             tvTaskTitle = itemView.findViewById(R.id.tvTaskTitle);
             ivTaskStatus = itemView.findViewById(R.id.ivTaskStatus);
+            card = itemView.findViewById(R.id.card);
         }
     }
 
@@ -51,15 +54,19 @@ public class TaskAdapter extends FirebaseRecyclerAdapter<Task, TaskAdapter.ViewH
 
         holder.tvTaskTitle.setText(model.getTitle());
 
+
         switch (model.getStatus()){
             case "todo":
                 holder.ivTaskStatus.setImageResource(R.drawable.todo);
+                holder.card.setBackgroundResource(R.drawable.bg_card_todo);
                 break;
             case "in-progress":
                 holder.ivTaskStatus.setImageResource(R.drawable.progress);
+                holder.card.setBackgroundResource(R.drawable.bg_card_progress);
                 break;
             case "done":
                 holder.ivTaskStatus.setImageResource(R.drawable.done);
+                holder.card.setBackgroundResource(R.drawable.bg_card_done);
                 break;
         }
 
